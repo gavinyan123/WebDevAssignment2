@@ -1,6 +1,6 @@
 // FOR EACH //
 Array.prototype.myEach = function() {
-    for(let i = 0; i<this.length; i++){
+    for(let i = 0; i < this.length; i++){
         if(this[i] === undefined) continue;
         callbackFn(this[i], i, this);
     }
@@ -8,12 +8,27 @@ Array.prototype.myEach = function() {
 
 // MAP //
 Array.prototype.myMap = function() {
-
+    //create array 
+    const array = [];
+    //interates through array and pushes each item in the array 
+    for(let i = 0; i < this.length; i++){
+        array.myPush(callbackFn(this[i], i, this));
+    }
+    return array;
 };
 
 // FILTER //
 Array.prototype.myFilter = function() {
-
+    //create array
+    const arr = [];
+    //iterate through array 
+    //if callbackFn returns true, push the item at that index
+    for(let i = 0; i < this.length; i++){
+        if(callbackFn(this[i], i, this)){
+            arr.myPush(this[i]);
+        }
+    }
+    return arr;
 };
 
 // SOME //
@@ -28,7 +43,7 @@ Array.prototype.myEvery = function() {
 
 // REDUCE //
 Array.prototype.myReduce = function() {
-
+    
 };
 
 // INCLUDES //
@@ -49,6 +64,7 @@ Array.prototype.myPush = function() {
         this[i] = args[arg_i];
         arg_i++;
     }
+    return this.length;
 };
 
 // LASTINDEXOF //
